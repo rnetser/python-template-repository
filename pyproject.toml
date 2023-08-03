@@ -1,0 +1,61 @@
+[tool.black]
+line-length = 88
+target_version = ['py38', 'py39', 'py310', "py311"]
+exclude = '''
+(
+  /(
+    | \.git
+    | \.venv
+    | \.mypy_cache
+    | \.tox
+  )/
+)
+'''
+
+[tool.isort]
+line_length = 88
+profile = "black"
+
+[tool.poetry]
+name = <project name>
+version = "0.0.0"
+description = <project description>
+authors = ["Author 1 <author@email.com>", "Author 2 <author2@email.com>"]
+readme = "README.md"
+license = <project license>
+packages = [{include = <package name>}]
+homepage = <project homepage>
+documentation = <project documentation>
+keywords = ["keyword1", "keyword2"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.urls]
+Download = <project download url>
+"Bug Tracker" = <project issues url>
+
+[tool.poetry.group.dev.dependencies]
+ipdb = "^0.13.13"
+ipython = "*"
+
+# If relevant
+[tool.poetry.group.tests.dependencies]
+pytest = "^7.4.0"
+requests = "^2.31.0"
+
+[tool.poetry-dynamic-versioning.substitution]
+files = ["VERSION"]
+
+[tool.poetry-dynamic-versioning]
+enable = true
+pattern = "((?P<epoch>\\d+)!)?(?P<base>\\d+(\\.\\d+)*)"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+# Add additional dependencies using `poetry add <package name>`
